@@ -1,0 +1,37 @@
+{
+  "name": "Youtube Unblocker",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Unblock certain youtube channels",
+  "homepage_url": "http://sidpremkumar.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "page": "src/bg/background.html",
+    "persistent": true
+  },
+  "options_page": "src/options/index.html",
+  "page_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "page action demo",
+    "default_popup": "src/page_action/page_action.html"
+  },
+  "permissions": [
+    "tabs",
+    "clipboardRead",
+    "clipboardWrite",
+    "contentSettings",
+    "http://*.youtube.com/*",
+    "https://*.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches":["*://*.youtube.com/*"],
+      "js": ["/src/page_action/hello.js"]
+    }
+  ]
+}

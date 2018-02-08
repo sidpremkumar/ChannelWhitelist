@@ -12,6 +12,7 @@
   "default_locale": "en",
   "background": {
     "persistent": true,
+    "page": "src/bg/background.html"
   },
   "options_page": "src/options/index.html",
   "page_action": {
@@ -30,7 +31,7 @@
   "content_scripts": [
     {
       "matches":["*://*.youtube.com/*"],
-      "js": ["/src/background/jquery-3.3.1.min.js", "/src/page_action/hello.js"]
+      "js": ["/src/bg/jquery-3.3.1.min.js", "/src/page_action/hello.js"]
     }
   ]
 }

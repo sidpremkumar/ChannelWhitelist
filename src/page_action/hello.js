@@ -1,6 +1,3 @@
-//alert("This is youtube");
-
-
 /*
 chrome.extension.sendMessage({instruction: "getYTid"}, function(response) {
 	//alert(response.url);
@@ -13,11 +10,45 @@ chrome.extension.sendMessage({instruction: "getYTid"}, function(response) {
 });
 */
 
-$(document).ready(function () {
-  	$.getJSON('https://noembed.com/embed', {format: 'json', url: location.href}, function (data) {
-  		if (data.author_name){
-  			history.pushState(null, null, location.href + "/channel=" + data.author_name + "/");
-  		}
-    });
+//$(document).ready(function () {
+//window.onload = function() {
+
+//}
+//});
+
+// window.addEventListener("load", function(event) {
+//    alert("Finish Loading");
+    
+//  });
+
+function changeURL(){
+  $.getJSON('https://noembed.com/embed', {format: 'json', url: location.href}, function (data) {
+        if (data.author_name){
+          history.replaceState(null, null, location.href + "&channel=" + data.author_name);
+        }
+  });
+}
+/*
+function setIntervalX(callback, delay, repetitions) {
+    var x = 0;
+    var intervalID = window.setInterval(function () {
+
+       callback();
+
+       if (++x === repetitions) {
+           window.clearInterval(intervalID);
+       }
+    }, delay);
+}
+*/
+changeURL();
+//setIntervalX(changeURL, 100, 20);
+
+
+
+document.addEventListener('transitionend', function(e) {
+    if (e.target.id === 'progress'){
+      changeURL();
+    }
 });
 

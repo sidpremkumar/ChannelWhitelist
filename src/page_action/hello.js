@@ -1,15 +1,22 @@
+<<<<<<< HEAD
 /*
 chrome.extension.sendMessage({instruction: "getYTid"}, function(response) {
 	//alert(response.url);
 	$.getJSON('https://noembed.com/embed', {format: 'json', url: response.url}, function (data) {
-  		if (data.author_name){
-  			history.pushState(null, null, response.url + "/channel=" + data.author_name + "/");
-  		}
-    	
-	});
-});
-*/
+=======
 
+$.getJSON('https://noembed.com/embed', {format: 'json', url: location.href}, function (data) {
+>>>>>>> 94e37f0709e8dea5b749fa72d425bdf80b7dace0
+  		if (data.author_name){
+			  history.replaceState(null, null, location.href + "/channel=" + data.author_name + "/");
+			  document.addEventListener('spfdone', function() {
+				
+			}); 
+			  //history.pushState(null, null, "https://www.youtube.com/watch?v=JDJDeuJbiKc/channel=Marques%20Brownlee");
+		}
+	});
+
+<<<<<<< HEAD
 //$(document).ready(function () {
 //window.onload = function() {
 
@@ -52,3 +59,19 @@ document.addEventListener('transitionend', function(e) {
     }
 });
 
+=======
+	document.addEventListener('transitionend', function(e) {
+		if (e.target.id === 'progress')
+			// do stuff
+			$.getJSON('https://noembed.com/embed', {format: 'json', url: location.href}, function (data) {
+  		if (data.author_name){
+			  history.replaceState(null, null, location.href + "/channel=" + data.author_name + "/");
+			  document.addEventListener('spfdone', function() {
+				
+			}); 
+			  //history.pushState(null, null, "https://www.youtube.com/watch?v=JDJDeuJbiKc/channel=Marques%20Brownlee");
+		}
+	});
+	});
+	
+>>>>>>> 94e37f0709e8dea5b749fa72d425bdf80b7dace0

@@ -26,13 +26,22 @@
     "clipboardWrite",
     "contentSettings",
     "http://*.youtube.com/*",
-    "https://*.youtube.com/*"
+    "https://*.youtube.com/*",
+	 "identity"
   ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwlYIa7OGkDHN9VK3K/8YX7zC7XqPgywU/RwcXk1PCv6Ym/70Pf9kFdscvSlDZv8ZG7P7bVYuZUlwYnmD9nnRJ3eg7o1VlVwdCDxmMAAmt0/Zlda9OEYHvNtXwdKyT6HKtNpPnyuyOfJJ1yE1JhaoIb3uLhoWNIJx/KSsp5mRH9b2SECgW/z89932SUGXX8xhStBRXQu0Gw4fXGxkA1qzrBUAgzTl7Pb5miIDyIgq4Xqx/O8DNl03KSb+o53pM/z2tP4xJtfgbUxlEgmUxcELBV9SJ3VL3Lr4I1PMQzBZm1AnbUwoPpJoYfqX6MMqx1lieXnuqCXnjBqlQsoRz8VzsQIDAQAB",
+	"content_security_policy": "script-src 'self' 'unsafe-eval' https://www.youtube.com/ https://ssl.google-analytics.com/; object-src 'self'",
   "content_scripts": [
     {
       "matches":["*://*.youtube.com/*"],
       "js": ["/src/bg/jquery-3.3.1.min.js", "/src/page_action/youtubeID.js", "/src/page_action/hello.js"],
       "run_at": "document_start"
     }
-  ]
+  ],
+  "oauth2": {
+    "client_id": "705704913466-8qttido6igb792s3rkq3qigoo3m5d8p5.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive"
+    ]
+  }
 }

@@ -1,9 +1,11 @@
+var channel;
+
 function changeURL(){
   $.getJSON('https://noembed.com/embed', {format: 'json', url: location.href}, function (data) {
         if (data.author_name){
+          channel = data.author_name;
           if (!window.location.href.includes("#")){
-              window.location.href = "https://www.youtube.com/" + "watch?v=" + YouTubeGetID(location.href) + "&channel=" + data.author_name + "#loaded";
-
+              window.location.replace("https://www.youtube.com/" + "watch?v=" + YouTubeGetID(location.href) + "&channel=" + data.author_name + "#loaded");
           }
         }
   });
@@ -18,3 +20,8 @@ document.addEventListener('transitionend', function(e) {
 });
 
 
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request.greeting == "hello")
+      sendResponse({url: channel});
+  });

@@ -16,6 +16,9 @@ changeURL();
 document.addEventListener('transitionend', function(e) {
     if (e.target.id === 'progress'){
       changeURL();
+      if (!window.location.href.includes("watch?v=")) {
+        window.location.reload();
+      }
     }
 });
 
